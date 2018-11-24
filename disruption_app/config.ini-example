@@ -1,0 +1,5 @@
+; config.ini
+[DEFAULT]
+DEBUG = true
+TESTING = true
+SECRET_KEY = 
