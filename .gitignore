@@ -1,4 +1,4 @@
-default.sqlite
+database.sqlite
 
 # Created by https://www.gitignore.io/api/python,jupyternotebook,virtualenv,pycharm
 
