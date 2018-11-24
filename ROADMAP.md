@@ -4,9 +4,9 @@
 
 ### Open Source Docs
 - [x] Gitignore
-- [ ] Readme
+- [x] Readme
 - [x] License
-- [ ] Roadmap
+- [x] Roadmap
 
 ### Scripts
 - [x] Makefile
