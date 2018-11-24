@@ -28,7 +28,9 @@
 
 ## Usage
 <!-- TODO: Usage section -->
-Run in terminal: `make run`
+Run in terminal: 
+1. `make config`
+2. `make run`
 
 ### Examples
 <!-- TODO: Examples section -->

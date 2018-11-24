@@ -8,16 +8,14 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+import config
 
 
 def create_app():
     """ 
     """
     app = Flask(__name__, static_folder='static', static_url_path='')
-    app.config['SECRET_KEY'] = 'ISuckAtTeamNames'
-    app.config[
-        'SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(os.path.join(basedir, 'database.sqlite'))
+    app.config.from_object(config.DevelopmentConfig)
     return app
 
 

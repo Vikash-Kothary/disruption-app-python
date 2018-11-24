@@ -17,6 +17,10 @@ env:
 	.venv/bin/pip3 install -r requirements.txt
 	#source .venv/bin/activate
 
+config:
+	@echo ''
+	cp disruption_app/config.ini-example disruption_app/config.ini
+
 build:
 	@echo 'Build project'
 
