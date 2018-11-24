@@ -1,0 +1,13 @@
+# Packaging
+pip>=18.1 
+setuptools==40.4.3 
+
+# App
+flask==0.12.2
+flask-sqlalchemy==2.1
+
+# Examples
+jupyter==1.0.0
+
+# Testing
+pytest==3.9.1
