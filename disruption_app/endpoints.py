@@ -28,5 +28,5 @@ def get_recs():
     recommendations = tinder.get_recs().get('data').get('results')
     for i in range(len(recommendations)):
         clean_recs = clean.Clean(recommendations[i]['user'])
-    #    extract.Extract(clean_recs)
+        extract.Extract(clean_recs)
     return jsonify(recommendations)
