@@ -5,16 +5,27 @@ endpoints.py - API endpoints
 
 from flask import Blueprint, render_template, request, jsonify
 import json
-import mock
-
+import models
+import tinder_api
+from config import DevelopmentConfig as Config
+import extract
+import clean
 endpoints = Blueprint("endpoints", __name__)
 
 
-@api.route('/recommendations', methods=['GET'])
-def get_recs():
-    response = {}
+@endpoints.route('/login', methods=['POST'])
+def login():
     email = request.json.get('email')
     password = request.json.get('password')
-    return jsonify(response)
+    Config.FB_USERNAME = email
+    Config.FB_PASSWORD = password
+    Config.save()
 
 
+@endpoints.route('/recommendations', methods=['GET'])
+def get_recs():
+    tinder = tinder_api.Client(username=Config.FB_USERNAME, password=Config.FB_PASSWORD)
+    recommendations = tinder.get_recs().get('data').get('results')
+    # clean_recs = clean.Clean(recommendations)
+    # extract.Extract(recommendations)
+    return jsonify(recommendations)
