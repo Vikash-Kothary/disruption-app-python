@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  ngrok:
+    container_name: ngrok_tunnel
+    image: wernight/ngrok
+    ports:
+      - "4040:4040"
+    links:
+      - app
+    environment:
+      - NGROK_PORT=app:5000
+      - NGROK_PROTOCOL=http
+      #- NGROK_AUTH=3fVv5QDD6Wh5jDUg7CtEg_6tsUV7Nz5gy1M6vZA7myF
+
+  app:
+    container_name: jobie-api
+    build: ./
+    ports:
+      - "5000:5000"
+    volumes:
+      - "./disruption_app:/jobie-api"

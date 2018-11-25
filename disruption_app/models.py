@@ -6,7 +6,7 @@ models.py - Package level variables
 import os
 import json
 from app import db
-import hashlib
+#import hashlib
 
 
 def get_mock_data():
@@ -34,7 +34,7 @@ class Profiles(db.Model):
     keywords = db.Column(db.String)
     image_id = db.Column(db.Integer, db.ForeignKey('images_table.image_id'))
 
-    def __init__(self, json):
+    def __init__(self, kwargs):
         profile_id = kwargs.get('profile_id')
         name = kwargs.get('name')
         age = kwargs.get('age')
@@ -76,7 +76,7 @@ class Images(db.Model):
     image_tags = db.Column(db.String)
     caption = db.Column(db.String)
 
-    def __init__(self, json):
+    def __init__(self, kwargs):
         image_url = kwargs['image_url']
         image_file = open(image_url).read()
         image_id = hashlib.md5(image_file).hexdigest()

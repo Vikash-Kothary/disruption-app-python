@@ -26,6 +26,7 @@ def login():
 def get_recs():
     tinder = tinder_api.Client(username=Config.FB_USERNAME, password=Config.FB_PASSWORD)
     recommendations = tinder.get_recs().get('data').get('results')
-    # clean_recs = clean.Clean(recommendations)
-    # extract.Extract(recommendations)
+    for i in range(len(recommendations)):
+        clean_recs = clean.Clean(recommendations[i]['user'])
+    #    extract.Extract(clean_recs)
     return jsonify(recommendations)
