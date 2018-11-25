@@ -14,7 +14,7 @@ requirements:
 env:
 	@echo 'Install requirements into virtualenv'
 	python3 -m venv .venv
-	.venv/bin/pip3 install -r requirements.txt
+	.venv/bin/pip3 install -r disruption_app/requirements.txt
 	#source .venv/bin/activate
 
 config:
