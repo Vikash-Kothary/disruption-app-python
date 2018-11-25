@@ -28,7 +28,7 @@ build:
 run: build
 	@echo 'Run project'
 	#python disruption_app/main.py
-	docker-compose up
+	docker-compose up -d
 
 tests:
 	@echo "Lol, it's a hackathon"
@@ -36,6 +36,9 @@ tests:
 examples:
 	@echo 'Run example notebooks'
 	jupyter notebook --notebook-dir=./examples/
+
+url:
+	sh scripts/get_ngrok_url.sh
 
 clean-pyc:
 	find . -type d -name '__pycache__' -exec rm --force --recursive {} +
