@@ -28,7 +28,7 @@ build:
 run: build
 	@echo 'Run project'
 	#python disruption_app/main.py
-	docker-compose up -d
+	docker-compose up
 
 tests:
 	@echo "Lol, it's a hackathon"

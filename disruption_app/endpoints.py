@@ -10,6 +10,7 @@ import tinder_api
 from config import DevelopmentConfig as Config
 import extract
 import clean
+
 endpoints = Blueprint("endpoints", __name__)
 
 
@@ -24,9 +25,11 @@ def login():
 
 @endpoints.route('/recommendations', methods=['GET'])
 def get_recs():
-    tinder = tinder_api.Client(username=Config.FB_USERNAME, password=Config.FB_PASSWORD)
-    recommendations = tinder.get_recs().get('data').get('results')
+    #tinder = tinder_api.Client(username=Config.FB_USERNAME, password=Config.FB_PASSWORD)
+    #recommendations = tinder.get_recs().get('data').get('results')
+    recommendations = models.get_mock_data()
     for i in range(len(recommendations)):
         clean_recs = clean.Clean(recommendations[i]['user'])
-        extract.Extract(clean_recs)
+        data = extract.Extract(clean_recs)
+        models.profile_save_util(data)
     return jsonify(recommendations)

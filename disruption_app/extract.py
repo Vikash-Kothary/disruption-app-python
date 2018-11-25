@@ -2,12 +2,13 @@ import requests
 import json
 from config import DevelopmentConfig as Config
 
+
 def Extract(profile_json):
 
     dictionary = profile_json
 
     bio_text = profile_json['bio']
-    ### Text
+    # Text
 
     BASE_URL = "https://uksouth.api.cognitive.microsoft.com/text/analytics/v2.0/"
 
@@ -28,11 +29,10 @@ def Extract(profile_json):
     dictionary['key_phrases'] = key_phrases['documents'][0]['keyPhrases']
     dictionary['sentiment'] = sentiment['documents'][0]['score']
 
-
     photos = dictionary['photos']
 
     for i in range(len(photos)):
-        ### Face
+        # Face
 
         # You can use this example JPG or replace the URL below with your own URL to a JPEG image.
         img_url = photos[i]['photo_url']
@@ -63,7 +63,7 @@ def Extract(profile_json):
         # Download the image from the url
         img = requests.get(img_url)
 
-        ### Vision
+        # Vision
 
         BASE_URL = 'https://uksouth.api.cognitive.microsoft.com/vision/v1.0/'  # Replace with your regional Base URL
 
@@ -89,8 +89,10 @@ def Extract(profile_json):
             dictionary['photos'][i]['smile'] = face_analysis[0]['faceAttributes']['smile']
             dictionary['photos'][i]['makeup'] = face_analysis[0]['faceAttributes']['makeup']
             dictionary['photos'][i]['hair'] = face_analysis[0]['faceAttributes']['hair']
-            dictionary['photos'][i]['facial_hair'] = face_analysis[0]['faceAttributes']['facialHair']
-            dictionary['photos'][i]['accessories'] = face_analysis[0]['faceAttributes']['accessories']
+            dictionary['photos'][i]['facial_hair'] = face_analysis[
+                0]['faceAttributes']['facialHair']
+            dictionary['photos'][i]['accessories'] = face_analysis[
+                0]['faceAttributes']['accessories']
             dictionary['photos'][i]['emotion'] = face_analysis[0]['faceAttributes']['emotion']
         else:
             dictionary['photos'][i]['face_box'] = None

@@ -2,16 +2,16 @@ version: '3'
 
 services:
 
-  ngrok:
-    container_name: jobie-python-ngrok
-    image: wernight/ngrok
-    ports:
-      - "4040:4040"
-    links:
-      - api
-    environment:
-      - NGROK_PORT=api:5000
-      - NGROK_PROTOCOL=http
+  # ngrok:
+  #   container_name: jobie-python-ngrok
+  #   image: wernight/ngrok
+  #   ports:
+  #     - "4040:4040"
+  #   links:
+  #     - api
+  #   environment:
+  #     - NGROK_PORT=api:5000
+  #     - NGROK_PROTOCOL=http
       #- NGROK_AUTH=3fVv5QDD6Wh5jDUg7CtEg_6tsUV7Nz5gy1M6vZA7myF
 
   api:

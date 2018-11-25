@@ -17,6 +17,34 @@ def get_mock_data():
     return mock_data
 
 
+def profile_save_util(kwards):
+    for i in range(len(json['photos'])):
+        profile = Profile({
+            'profile_id': json['profile_id'],
+            'name': json['name'],
+            'age': json['age'],
+            'schools': str(json['schools']),
+            'distance': json['distance'],
+            'bio': json['bio'],
+            'gender': json['gender'],
+            'sentiment': json['sentiment'],
+            'keywords': str(json['keywords']),
+            'image_id': json['photos'][i]['image_id'],
+            'face_box': str(json['photos'][i]['face_box']),
+            'estimate_age': json['photos'][i]['estimate_age'],
+            'emotion': json['photos'][i]['emotion'],
+            'facial_hair': str(json['photos'][i]['facial_hair']),
+            'accessories': str(json['photos'][i]['accessories']),
+            'hair': str(json['photos'][i]['hair']),
+            'makeup': json['photos'][i]['makeup'],
+            'smile': json['photos'][i]['smile'],
+            'racy': json['photos'][i]['racy'],
+            'image_tags': str(json['photos'][i]['image_tags']),
+            'caption': json['photos'][i]['caption']
+        })
+        db.save(profile)
+
+
 class Profiles(db.Model):
     __tablename_ = 'profile_table'
 
@@ -44,6 +72,7 @@ class Profiles(db.Model):
         gender = kwargs.get('gender')
         sentiment = kwargs.get('sentiment')
         keywords = kwargs.get('keywords')
+        image_id = kwargs.get('image_id')
 
     def to_json():
         return {
@@ -55,7 +84,19 @@ class Profiles(db.Model):
             'bio': bio,
             'gender': gender,
             'sentiment': sentiment,
-            'keywords': keywords
+            'keywords': keywords,
+            'image_id': image_id,
+            'face_box': image_id.face_box,
+            'estimate_age': image_id.estimate_age,
+            'emotion': image_id.emotion,
+            'facial_hair': image_id.facial_hair,
+            'accessories': image_id.accessories,
+            'hair': image_id.hair,
+            'makeup': image_id.makeup,
+            'smile': image_id.smile,
+            'racy': image_id.racy,
+            'image_tags': image_id.image_tags,
+            'caption': image_id.caption
         }
 
 
