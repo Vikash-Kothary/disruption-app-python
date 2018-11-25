@@ -37,3 +37,6 @@ class ProductionConfig(BaseConfig):
     DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
     TESTING = os.getenv('TESTING', 'false').lower() == 'true'
     SECRET_KEY = os.getenv('SECRET_KEY', 'ISuckAtTeamNames')
+    FACE_API_KEY = os.getenv('FACE_API_KEY', None)
+    VISION_API_KEY = os.getenv('VISION_API_KEY', None)
+    TEXT_API_KEY = os.getenv('TEXT_API_KEY', None)
