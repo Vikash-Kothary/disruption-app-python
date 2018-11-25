@@ -26,6 +26,9 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = config.get('DEFAULT', 'DEBUG').lower() == 'true'
     TESTING = config.get('DEFAULT', 'TESTING').lower() == 'true'
     SECRET_KEY = config.get('DEFAULT', 'SECRET_KEY')
+    FACE_API_KEY = config.get('DEFAULT', 'FACE_API_KEY')
+    VISION_API_KEY = config.get('DEFAULT', 'VISION_API_KEY')
+    TEXT_API_KEY = config.get('DEFAULT', 'TEXT_API_KEY')
 
 
 class ProductionConfig(BaseConfig):

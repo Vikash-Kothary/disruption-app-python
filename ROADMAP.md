@@ -33,7 +33,7 @@
 > https://azure.microsoft.com/en-gb/services/cognitive-services/directory/vision/
 - [ ] Face (Face detection, Emotion detection, Similar face recognition)
 - [ ] Content moderator (Explicit or offensive content moderation, Custom image and text lists to block or allow matching content)
-- [ ] Text Analytics (Sentiment analysis, Key phrase extraction)
+- [x] Text Analytics (Sentiment analysis, Key phrase extraction)
 - [ ] Bing Visual Search (Knowledge acquisition from images, Identification of similar images)
 - [ ] Bing Entity Search (Knowledge acquisition for named entities)
 
