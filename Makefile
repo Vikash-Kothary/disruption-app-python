@@ -5,8 +5,8 @@ requirements:
 	sudo apt-get -y install python3-pip python3-venv vagrant
 	#pip3 install --user --upgrade pip
 	#pip3 install --user virtualenv
-	vagrant plugin install vagrant-azure
-	vagrant box add azure-deploy https://github.com/azure/vagrant-azure/raw/v2.0/dummy.box --provider azure
+	#vagrant plugin install vagrant-azure
+	#vagrant box add azure-deploy https://github.com/azure/vagrant-azure/raw/v2.0/dummy.box --provider azure
 	# vagrant plugin install vagrant-aws
 	# vagrant box add aws-deploy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box
 	
@@ -14,7 +14,7 @@ requirements:
 env:
 	@echo 'Install requirements into virtualenv'
 	python3 -m venv .venv
-	.venv/bin/pip3 install -r requirements.txt
+	.venv/bin/pip3 install -r disruption_app/requirements.txt
 	#source .venv/bin/activate
 
 config:
@@ -23,13 +23,12 @@ config:
 
 build:
 	@echo 'Build project'
+	docker-compose build
 
-install: build
-	@echo 'Install project'
-
-run:
+run: build
 	@echo 'Run project'
-	python disruption_app/main.py
+	#python disruption_app/main.py
+	docker-compose up
 
 tests:
 	@echo "Lol, it's a hackathon"
@@ -37,6 +36,9 @@ tests:
 examples:
 	@echo 'Run example notebooks'
 	jupyter notebook --notebook-dir=./examples/
+
+url:
+	sh scripts/get_ngrok_url.sh
 
 clean-pyc:
 	find . -type d -name '__pycache__' -exec rm --force --recursive {} +

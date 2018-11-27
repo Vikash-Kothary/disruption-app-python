@@ -1,7 +1,0 @@
-pip>=18.1 
-setuptools==40.6.2
-flask==1.0.2
-flask-sqlalchemy==2.3.2
-jupyter==1.0.0
-pytest==3.9.1
-https://github.com/Vikash-Kothary/tinder-api-python/archive/v0.0.0.zip
